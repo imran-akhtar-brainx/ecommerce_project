@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+Category.create(name: "Men's")
+Category.create(name: "women's")
+Product.create(name: "Nike Retro", description: "Created for the hardwood but taken to the streets, the '80s b-ball icon returns with perfectly sheened overlays and original university colors. With its classic hoops design, the Nike Dunk High Retro channels '80s vintage back onto the streets while its padded, high-top collar adds an old-school look rooted in comfort.", price: 120.5)
+SubCategory.create(name: "Shoes", description: "80s b-ball icon returns with perfectly")
+
