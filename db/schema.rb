@@ -41,14 +41,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_25_072747) do
   end
 
   create_table "sub_categories", force: :cascade do |t|
-    t.integer "categories_id"
-    t.integer "products_id"
+    t.integer "category_id"
+    t.integer "product_id"
     t.string "name"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["categories_id"], name: "index_sub_categories_on_categories_id"
-    t.index ["products_id"], name: "index_sub_categories_on_products_id"
+    t.index ["category_id"], name: "index_sub_categories_on_category_id"
+    t.index ["product_id"], name: "index_sub_categories_on_product_id"
   end
 
 end
