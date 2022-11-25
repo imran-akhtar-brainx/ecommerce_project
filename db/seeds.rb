@@ -11,3 +11,6 @@ Product.create(name: "Nike Retro", description: "Created for the hardwood but ta
 SubCategory.create(category_id: 1, product_id: 1, name: "Shoes", description: "80s b-ball icon returns with perfectly")
 Product.create(name: "Addidass Retro", description: "Created for the hardwood but taken to the streets," , price: 12)
 
+Product.create(sub_category_id:1, name: "Nike Retro", description: "Created for the hardwood but taken verlays and original.", price: 120.5)
+SubCategory.create(category_id: 1, name: "Shoes", description: "80s b-ball icon returns with perfectly")
+Order.create(email: "imran.akhtar@gmail.com", customer_name: "imran", phone_number: 03340053857)
