@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  root "categories#index"
+  root "sub_categories#index"
   resources :categories
+  resources :sub_categories
 end
