@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root "sub_categories#index"
   resources :categories
   resources :sub_categories
+  resources :products
 end
