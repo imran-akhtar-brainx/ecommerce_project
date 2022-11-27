@@ -1,10 +1,15 @@
+<% count = 1 %>
 <div class="d-flex justify-content-center">
-    <div class="card" style="width: 18rem;">
-      <%= image_tag "shoe.webp", class: "card-img-top" %>
-      <div class="card-body">
-        <h5 class="card-title"><%= @product.name.titleize %></h5>
-        <p class="card-text"><%= @product.description %></p>
-        <h3 class="card-text"><%= @product.price %></h3>
-      </div>
+  <div class="card" style="width: 18rem;" data-controller="cart" data-cart-count-value="<%= count %>"  data-cart-product-value="<%= @product %>">
+    <%= image_tag "shoe.webp", class: "card-img-top" %>
+    <div class="card-body">
+      <h5 class="card-title"><%= @product.name.titleize %></h5>
+      <p class="card-text"><%= @product.description %></p>
+      <h3 class="card-text"><%= @product.price %></h3>
+      <span id="mys" data-cart-target="myspan"><%= count %></span>
+      <button class="btn btn-outline-primary" data-action="click->cart#addToCart" data-target="cart.count">Add
+        to cart
+      </button>
     </div>
+  </div>
 </div>
