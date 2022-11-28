@@ -1,0 +1,29 @@
+<h1> new order </h1>
+<%= form_with model: @order do |form| %>
+  <div>
+    <%= form.label :email %><br>
+    <%= form.text_area :email %>
+  </div>
+
+  <div>
+    <%= form.label :customer_name %><br>
+    <%= form.text_area :customer_name %>
+  </div>
+
+  <div>
+    <%= form.label :phone_number %><br>
+    <%= form.text_area :phone_number %>
+  </div>
+  <%= form.hidden_field :products_ids, value: @product_ids %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+
+
+<% @products.each do |product| %>
+  <%= product.name %>
+<% end %>
