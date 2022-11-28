@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   root "sub_categories#index"
   get 'sub_categories', to: 'sub_categories#index'
   resources :products, only: [:index, :show]
-  resources :orders
+  resources :orders, only: [:index]
 end
