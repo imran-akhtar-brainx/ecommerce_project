@@ -1,0 +1,18 @@
+<div class="row mt-4">
+  <% products.each do |product| %>
+    <div class="card" style="width: 18rem;">
+      <%= image_tag "shoe.webp", class: "card-img-top" %>
+      <div class="card-body">
+        <h5 class="card-title"><%= product.name.titleize %></h5>
+        <p class="card-text"><%= product.price %></p>
+        <% if params[:controller] == "orders" %>
+          <p class="card-text"><%= product.description %></p>
+        <% else %>
+          <button data-action='cart#addToCart' class="btn btn-primary" data-product-id="<%= product.id %>" data-product-name="<%= product.name %>" data-product-price="<%= product.price %>">Add
+            to cart
+          </button>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

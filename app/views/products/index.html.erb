@@ -1,19 +1,16 @@
-<div class="d-flex justify-content-center" data-controller="cart" data-cart-url-value="<%= new_order_path %>">
-  <% @products.each do |product| %>
-    <div class="card" style="width: 18rem;" >
-      <%= image_tag "shoe.webp", class: "card-img-top" %>
-      <div class="card-body">
-        <h5 class="card-title"><%= product.name.titleize %></h5>
-        <p class="card-text"><%= product.price %></p>
-        <button data-action='cart#addToCart' class="btn btn-primary" data-product="<%= product.id %>">Add to cart</button>
-      </div>
+<div class="container d-flex justify-content-center" data-controller="cart" data-cart-url-value="<%= new_order_path %>">
+  <div class="col-8">
+    <%= render 'shared/products', products: @products %>
+  </div>
+
+  <div class="col-4 justify-content-end border" id="cart">
+
+    <div>
+      <%= form_with url: new_order_path, method: :get do |form| %>
+        <%= form.label :products_ids, "products" %>
+        <%= form.text_field :products_ids %>
+        <%= form.submit "Check Out" %>
+      <% end %>
     </div>
-  <% end %>
-  <div class="justify-content-end">
-    <%= form_with url: new_order_path, method: :get do |form| %>
-      <%= form.label :products_ids, "products" %>
-      <%= form.text_field :products_ids %>
-      <%= form.submit "Check Out" %>
-    <% end %>
   </div>
 </div>
