@@ -10,6 +10,7 @@ export default class extends Controller {
 
     connect() {
         this.products_ids = [];
+        debugger
     }
 
     addToCart(event){

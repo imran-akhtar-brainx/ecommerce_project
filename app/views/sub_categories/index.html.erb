@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <% @sub_categories.each do |sub_category| %>
-    <div class="card" style="width: 18rem;">
+    <div class="card">
       <%= image_tag "shoe.webp", class: "card-img-top" %>
       <div class="card-body">
         <h5 class="card-title"><%= sub_category.name.titleize %></h5>
