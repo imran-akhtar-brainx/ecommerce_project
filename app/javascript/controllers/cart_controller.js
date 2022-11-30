@@ -1,19 +1,15 @@
-import { Controller } from "@hotwired/stimulus"
+import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-    static targets = [ "myspan" ]
-    static values = {
-        url: String,
-        product: Number,
-
-    }
 
     connect() {
         this.products_ids = [];
-        debugger
+        this.products = [];
+        this.productDict = {};
     }
 
-    addToCart(event){
+    addToCart(event) {
+
         let product_id = event.currentTarget.getAttribute("data-product-id");
         let product_name = event.currentTarget.getAttribute("data-product-name");
         let product_price = event.currentTarget.getAttribute("data-product-price");
@@ -27,23 +23,37 @@ export default class extends Controller {
         const divElement = document.getElementById('cart');
         element.classList.add("border")
         divElement.appendChild(element);
+        this.addToSession(product_id);
+        document.cookie = "prod="+this.productDict.toString();
 
+        this.addToDictionary(product_id);
         this.products_ids.push(product_id);
-        // sessionStorage.setItem("product_ids", this.products_ids);
         document.getElementById('products_ids').value = this.products_ids;
+
     }
 
-    checkout(){
-        let that = this
-        $.ajax({
-            type: "GET",
-            url: that.urlValue,
-            data: {product_ids: that.products_ids},
-            success() {
+    addToDictionary(product_id){
 
-            }
-        })
+    }
+    addToSession(product_id){
+        if (product_id in this.productDict){
+            this.productDict[product_id] += 1;
         }
+        else {
+            this.productDict[product_id] = 1;
+        }
+        let product_keys = {'products_keys': this.productDict}
+        let cookie = [name, '=', JSON.stringify(product_keys), '; domain=.', window.location.host.toString(), '; path=/;'].join('');
+        document.cookie = cookie;
+        document.getElementById('product_dict').value = this.productDict;
+        this.read_cookie("name")
+    }
+
+    read_cookie(name) {
+        let result = document.cookie.match(new RegExp(name + '=([^;]+)'));
+        result && (result = JSON.parse(result[1]));
+        console.log(result)
+    }
 
 }
 

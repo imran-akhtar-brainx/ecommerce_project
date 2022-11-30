@@ -1,7 +1,11 @@
-<div class="row mt-4">
+<div class="d-flex justify-content-start">
   <% products.each do |product| %>
-    <div class="card" style="width: 18rem;">
-      <%= image_tag "shoe.webp", class: "card-img-top" %>
+    <div class="card">
+      <div class="product-img-wrapper">
+        <% if product.images.first.representable? %>
+          <%= image_tag product.images.first, class: "card-img-top product-img" %>
+        <% end %>
+      </div>
       <div class="card-body">
         <h5 class="card-title"><%= product.name.titleize %></h5>
         <p class="card-text"><%= product.price %></p>

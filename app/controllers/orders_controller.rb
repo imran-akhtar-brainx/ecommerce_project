@@ -4,7 +4,6 @@ class OrdersController < ApplicationController
     @orders = Order.all
   end
 
-
   def new
     @order = Order.new
     product_ids = params[:products_ids] if params[:products_ids].present?
