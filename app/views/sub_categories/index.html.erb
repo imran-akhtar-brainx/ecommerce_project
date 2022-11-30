@@ -5,7 +5,7 @@
       <div class="card-body">
         <h5 class="card-title"><%= sub_category.name.titleize %></h5>
         <p class="card-text"><%= sub_category.description %></p>
-        <%= link_to "Checkout", products_path(id: sub_category.id), class:"btn btn-primary" %>
+        <%= link_to "View", products_path(id: sub_category.id), class:"btn btn-primary" %>
       </div>
     </div>
   <% end %>

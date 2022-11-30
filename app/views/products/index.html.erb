@@ -1,12 +1,20 @@
-<div class="d-flex justify-content-center">
-  <% @products.each do |product| %>
-    <div class="card">
-      <%= image_tag "shoe.webp", class: "card-img-top" %>
-      <div class="card-body">
-        <h5 class="card-title"><%= product.name.titleize %></h5>
-        <p class="card-text"><%= product.price %></p>
-        <%= link_to "Add to Cart", "#", class: "btn btn-primary" %>
+<div class="container mt-5" data-controller="cart" data-cart-url-value="<%= new_order_path %>">
+  <div class="row">
+
+    <div class="col-8">
+      <%= render 'products/product_cards', products: @products %>
+    </div>
+    <div class="col-4">
+      <div class="d-flex justify-content-center flex-column bd-highlight mb-3 border" id="cart">
+
+        <div class="">
+          <%= form_with url: new_order_path, method: :get do |form| %>
+            <%= form.hidden_field :products_ids %>
+            <%= form.hidden_field :product_dict %>
+            <%= form.submit "Check Out" %>
+          <% end %>
+        </div>
       </div>
     </div>
-  <% end %>
+  </div>
 </div>
